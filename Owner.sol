@@ -3,16 +3,16 @@ pragma solidity ^0.6.0;
 
 contract Owner{
 
-    address payable owner;
+    address payable authorizer;
     constructor()public{
-        owner = msg.sender;
+        authorizer = msg.sender;
     }
     modifier onlyOwner(){
-        require(isOwner(), "You are not the Owner");
+        require(isOwner(), "You are not the Authorizer");
         _;
     }
     function isOwner()public view returns(bool){
-        return (msg.sender == owner);
+        return (msg.sender == authorizer);
     }
 
 }
